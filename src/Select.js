@@ -797,6 +797,22 @@ class Select extends React.Component {
 			return this.selectValue(this._focusedOption);
 		}
 	}
+	
+	numberOfVisibleOptions() {
+		return (this._visibleOptions ? this._visibleOptions.length : 0);
+	}
+
+	isFocused() {
+		return this.state.isFocused;
+	}
+
+	isOpen() {
+		return this.state.isOpen;
+	}
+
+	getInputValue() {
+		return this.state.inputValue;
+	}
 
 	renderLoading () {
 		if (!this.props.isLoading) return;
