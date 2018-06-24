@@ -101,7 +101,7 @@ class Select extends React.Component {
 		].forEach((fn) => this[fn] = this[fn].bind(this));
 
 		this.state = {
-			inputValue: '',
+			inputValue: this.props.inputValue || '',
 			isFocused: false,
 			isOpen: false,
 			isPseudoFocused: false,
@@ -144,7 +144,12 @@ class Select extends React.Component {
 		if (this.state.inputValue && this.props.value !== nextProps.value && nextProps.onSelectResetsInput) {
 			this.setState({ inputValue: this.handleInputValueChange('') });
 		}
+		if (this.props.inputValue !== nextProps.inputValue) {
+			const inputValue = nextProps.inputValue || '';
+			this.setState({ inputValue: inputValue });
+		}
 	}
+		
 
 	componentDidUpdate (prevProps, prevState) {
 		// focus to the selected option
