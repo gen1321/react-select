@@ -711,7 +711,7 @@ var Select$1 = function (_React$Component) {
 		});
 
 		_this.state = {
-			inputValue: '',
+			inputValue: _this.props.inputValue || '',
 			isFocused: false,
 			isOpen: false,
 			isPseudoFocused: false,
@@ -758,6 +758,10 @@ var Select$1 = function (_React$Component) {
 
 			if (this.state.inputValue && this.props.value !== nextProps.value && nextProps.onSelectResetsInput) {
 				this.setState({ inputValue: this.handleInputValueChange('') });
+			}
+			if (this.props.inputValue !== nextProps.inputValue) {
+				var inputValue = nextProps.inputValue || '';
+				this.setState({ inputValue: inputValue });
 			}
 		}
 	}, {
@@ -1489,6 +1493,26 @@ var Select$1 = function (_React$Component) {
 			if (this._focusedOption) {
 				return this.selectValue(this._focusedOption);
 			}
+		}
+	}, {
+		key: 'numberOfVisibleOptions',
+		value: function numberOfVisibleOptions() {
+			return this._visibleOptions ? this._visibleOptions.length : 0;
+		}
+	}, {
+		key: 'isFocused',
+		value: function isFocused() {
+			return this.state.isFocused;
+		}
+	}, {
+		key: 'isOpen',
+		value: function isOpen() {
+			return this.state.isOpen;
+		}
+	}, {
+		key: 'getInputValue',
+		value: function getInputValue() {
+			return this.state.inputValue;
 		}
 	}, {
 		key: 'renderLoading',
